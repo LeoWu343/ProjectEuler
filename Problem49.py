@@ -28,6 +28,7 @@ def equidistant(comparison, num1, num2):
 
 visited = set()
 visited_triples = set()
+sieve = set(eratosthenes(10000))
 for i in xrange(1000, 10000):
     nums = list(itertools.permutations(str(i)))
     nums = [int(''.join(a)) for a in nums]
@@ -45,5 +46,5 @@ for i in xrange(1000, 10000):
                 else:
                     visited_triples.add((nums[i], nums[j], nums[k]))
                 if equidistant(nums[j], nums[i], nums[k]):
-                    if nums[j] in eratosthenes(nums[j]) and nums[i] in eratosthenes(nums[i]) and nums[k] in eratosthenes(nums[k]):
+                    if nums[j] in sieve and nums[i] in sieve and nums[k] in sieve:
                         print (nums[i], nums[j], nums[k])
