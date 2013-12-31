@@ -45,5 +45,5 @@ for i in xrange(1000, 10000):
                 else:
                     visited_triples.add((nums[i], nums[j], nums[k]))
                 if equidistant(nums[j], nums[i], nums[k]):
-                    if nums[j] in eratosthenes(10000) and nums[i] in eratosthenes(10000) and nums[k] in eratosthenes(10000):
+                    if nums[j] in eratosthenes(nums[j]) and nums[i] in eratosthenes(nums[i]) and nums[k] in eratosthenes(nums[k]):
                         print (nums[i], nums[j], nums[k])
