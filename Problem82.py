@@ -3,7 +3,7 @@ import time
 
 start = time.clock()
 
-f = open("Problem81.txt")
+f = open("Problem82.txt")
 problem = []
 curr = f.readline()
 while curr:
@@ -29,8 +29,8 @@ def dijkstra(problem, start):
         if dist[u] == float("inf"):
             break
 
-        for v in ((u[0]+1, u[1]), (u[0], u[1]+1)):
-            if v[0] < 80 and v[1] < 80:
+        for v in ((u[0]+1, u[1]), (u[0], u[1]-1), (u[0], u[1]+1)):
+            if v[0] < 80 and v[1] < 80 and v[1] >= 0:
                 alt = dist[u] + problem[v[0]][v[1]]
                 if alt < dist[v]:
                     dist[v] = alt
@@ -39,5 +39,12 @@ def dijkstra(problem, start):
 
     return dist
 
-print dijkstra(problem, (0, 0))[(79, 79)]
+smallest = []
+for i in range(80):
+    curr = dijkstra(problem, (0, i))
+    points = []
+    for j in range(80):
+        points.append(curr[79, j])
+    smallest.append(min(points))
+print min(smallest)
 print time.clock() - start
